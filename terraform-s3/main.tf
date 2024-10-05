@@ -1,6 +1,6 @@
 # create s3 Bucket
 resource "aws_s3_bucket" "mybucket" {
-    bucket = var.bucketname
+  bucket = var.bucketname
 }
 
 # Add additional configuarations 
@@ -40,19 +40,19 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
 
 # Upload files to bucket
 resource "aws_s3_object" "index" {
-    bucket = aws_s3_bucket.mybucket.id
-    key = "index.html"
-    source = "index.html"
-    acl = "public-read"
-    content_type = "text/html"
+  bucket       = aws_s3_bucket.mybucket.id
+  key          = "index.html"
+  source       = "index.html"
+  acl          = "public-read"
+  content_type = "text/html"
 }
 
 resource "aws_s3_object" "error" {
-    bucket = aws_s3_bucket.mybucket.id
-    key = "error.html"
-    source = "error.html"
-    acl = "public-read"
-    content_type = "text/html"
+  bucket       = aws_s3_bucket.mybucket.id
+  key          = "error.html"
+  source       = "error.html"
+  acl          = "public-read"
+  content_type = "text/html"
 }
 
 # Setup website 
