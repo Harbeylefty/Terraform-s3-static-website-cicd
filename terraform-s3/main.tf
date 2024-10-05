@@ -60,7 +60,7 @@ resource "aws_s3_object" "error" {
 
 }
 
-# Setup website for static hosting
+# Setup website for static hosting.
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.mybucket.id
 
