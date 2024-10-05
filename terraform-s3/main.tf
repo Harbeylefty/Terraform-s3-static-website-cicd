@@ -1,11 +1,9 @@
-# create s3 Bucket
+// create s3 Bucket
 resource "aws_s3_bucket" "mybucket" {
   bucket = var.bucketname
 }
 
-# Add additional configuarations 
-
-# Define ownership control so that everything in the bucket is owned by bucketowner
+// Define ownership control so that everything in the bucket is owned by bucketowner
 resource "aws_s3_bucket_ownership_controls" "ownership" {
   bucket = aws_s3_bucket.mybucket.id
 
@@ -14,7 +12,7 @@ resource "aws_s3_bucket_ownership_controls" "ownership" {
   }
 }
 
-# Make bucket public using public access block resource
+// Make bucket public using public access block resource
 resource "aws_s3_bucket_public_access_block" "public_access" {
   bucket = aws_s3_bucket.mybucket.id
 
@@ -25,8 +23,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 }
 
 
-# Add acl (access control lists) to make sure that the bucket is ready for the website
-# After applying these changes we will see that the bucket is now ready to set up our static website on it.
+// Add acl (access control lists) to make sure that the bucket is ready for the website
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
   depends_on = [
@@ -38,7 +35,7 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
   acl    = "public-read"
 }
 
-# Upload files to bucket
+// Upload files to bucket
 resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.mybucket.id
   key          = "index.html"
@@ -60,7 +57,7 @@ resource "aws_s3_object" "error" {
 
 }
 
-# Setup website for static hosting.
+// Setup website for static hosting.
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.mybucket.id
 
