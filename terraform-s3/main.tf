@@ -46,6 +46,8 @@ resource "aws_s3_object" "index" {
   content_type = "text/html"
 
   acl = "public-read"
+
+
 }
 
 resource "aws_s3_object" "error" {
@@ -55,9 +57,10 @@ resource "aws_s3_object" "error" {
   content_type = "text/html"
 
   acl = "public-read"
+
 }
 
-# Setup website 
+# Setup website for static hosting
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.mybucket.id
 
