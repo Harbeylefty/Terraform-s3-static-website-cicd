@@ -1,0 +1,10 @@
+name: terraform s3-static-webiste CICD
+
+on: 
+  push:
+    branches:
+      - master
+
+env:
+  AWS_ACCESS_KEY_ID: 
+  AWS_SECRET_ACCESS_KEY: 
